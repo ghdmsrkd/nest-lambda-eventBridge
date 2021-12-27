@@ -1,0 +1,27 @@
+service: nest-lambda-eventBridge
+
+frameworkVersion: '2 || 3'
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+  - serverless-offline-aws-eventbridge
+
+custom:
+  serverless-offline-aws-eventbridge:
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  profile: 
+  region: ap-northeast-2
+  lambdaHashingVersion: 20201221
+
+functions:
+  BTPExpired:
+    handler: src/lambda.run
+    events:
+      - schedule:
+          rate: rate(1 minutes)
+          input:
+            action: "MY.EVENT.ONE"

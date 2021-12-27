@@ -1,0 +1,13 @@
+node_modules
+# Keep environment variables out of version control
+.env
+.env.*
+.build
+yarn.lock
+.vscode/settings.json
+.serverless/*
+
+yarn-error.log
+yarn.lock
+
+dist/*
